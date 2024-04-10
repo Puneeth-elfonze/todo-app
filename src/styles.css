@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+    --btn-background: orange;
+    --hero-background: linear-gradient(90deg, #103CE7, #64E9FF);
+    --edit-btn-background: orange;
+    --comp-btn-background: green;
+    --hero-color: black;
+    --todos-background: white;
+
+    /* --hero-background: linear-gradient(90deg, #383838, #000);
+    --hero-color: white;
+    --todos-background: rgb(74, 74, 74); */
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+}

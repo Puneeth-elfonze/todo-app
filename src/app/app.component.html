@@ -1,0 +1,22 @@
+<section class="addNew">
+  <h1>ToDo App</h1>
+  <form (ngSubmit)="addTodo()">
+    <input class="todoInput" type="text" placeholder="Add new todo" [(ngModel)]="newTodoText" name="newTodo">
+    <input class="btn" type="submit" value="add">
+  </form>
+</section>
+
+<section class="todos">
+  <div class="todo-items" *ngFor="let todo of todos" [ngClass]="{'completed': todo.completed}">
+    <h3 *ngIf="!todo.editing">{{todo.text}}</h3>
+
+    <form (ngSubmit)="saveEdit(todo)">
+      <input class="todoInput editInput" *ngIf="todo.editing" type="text" [value]="todo.text" [(ngModel)]="todo.text" name="todo.text">
+      <input type="submit" *ngIf="todo.editing" class="btn" (click)="saveEdit(todo)" value="Save"/>
+    </form>
+
+    <button *ngIf="!todo.completed && !todo.editing" (click)="edit(todo)" class="btn edit-btn">Edit</button>
+    <button *ngIf="!todo.completed && !todo.editing" (click)="completed(todo)" class="btn comp-btn">Completed</button>
+    <button *ngIf="!todo.editing" (click)="delete(todo)" class="btn del-btn">Delete</button>
+  </div>
+</section>
