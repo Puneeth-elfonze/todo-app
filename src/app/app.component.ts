@@ -8,45 +8,47 @@ import { Renderer2 } from '@angular/core';
 })
 export class AppComponent {
   newTodoText: string = '';
-  todos: { text: string, editing: boolean, completed: boolean }[] = [];
+  todos: { text: string, editing: boolean, completed: boolean, time: string }[] = [];
+  newTodoTime: string = '';
 
   addTodo() {
+    console.log(this.newTodoTime);
+
     if (this.newTodoText.trim() != '') {
-      this.addToDoIfNotExist(this.newTodoText);
+      this.addToDoIfNotExist(this.newTodoText, this.newTodoTime);
       this.newTodoText = '';
+      this.newTodoTime = '';
     }
   }
 
-  addToDoIfNotExist(newTodo: string) {
+  addToDoIfNotExist(newTodo: string, newTodoTime: string) {
     if (!this.todos.find(todo => todo.text === newTodo)) {
-      this.todos.push({ text: newTodo, editing: false, completed: false });
+      this.todos.push({ text: newTodo, editing: false, completed: false, time: this.newTodoTime });
     } else {
       console.error(`'${newTodo}' Already exists, Rejected`)
     }
   }
 
-  completed(todo: { text: string, editing: boolean, completed: boolean }) {
+  completed(todo: { text: string, editing: boolean, completed: boolean, time: string }) {
     todo.completed = true;
   }
 
-  edit(todo: { text: string, editing: boolean, completed: boolean }) {
+  edit(todo: { text: string, editing: boolean, completed: boolean, time: string }) {
     todo.editing = true;
   }
 
-  saveEdit(todo: { text: string, editing: boolean, completed: boolean }){
+  saveEdit(todo: { text: string, editing: boolean, completed: boolean, time: string }) {
     console.log(todo.text);
-    
+
     todo.editing = false;
   }
 
-  delete(todo: { text: string, editing: boolean, completed: boolean }){
-    const index = this.todos.indexOf(todo);
-
-    if (index !== -1) {
-      this.todos.splice(index, 1);
-    }
+  delete(i: number) {
+    this.todos.splice(i, 1);
   }
+
+  markAsIncomplete(todo: { text: string, editing: boolean, completed: boolean, time: string }) {
+    todo.completed = false;
+  }
+
 }
-
-
-

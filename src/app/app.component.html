@@ -1,13 +1,15 @@
 <section class="addNew">
   <h1>ToDo App</h1>
   <form (ngSubmit)="addTodo()">
-    <input class="todoInput" type="text" placeholder="Add new todo" [(ngModel)]="newTodoText" name="newTodo">
+    <input class="todoInput" type="text" placeholder="Add new todo" [(ngModel)]="newTodoText" name="newTodo" required>
+    <input class="todoInput" type="time" placeholder="HH : MM" [(ngModel)]="newTodoTime" name="newTodoTime" required>
     <input class="btn" type="submit" value="add">
   </form>
 </section>
 
 <section class="todos">
-  <div class="todo-items" *ngFor="let todo of todos" [ngClass]="{'completed': todo.completed}">
+  <div class="todo-items" *ngFor="let todo of todos;let i = index" [ngClass]="{'completed': todo.completed}">
+    <h5 *ngIf="todo.time">Complete By : {{todo.time}}</h5>
     <h3 *ngIf="!todo.editing">{{todo.text}}</h3>
 
     <form (ngSubmit)="saveEdit(todo)">
@@ -16,7 +18,8 @@
     </form>
 
     <button *ngIf="!todo.completed && !todo.editing" (click)="edit(todo)" class="btn edit-btn">Edit</button>
-    <button *ngIf="!todo.completed && !todo.editing" (click)="completed(todo)" class="btn comp-btn">Completed</button>
-    <button *ngIf="!todo.editing" (click)="delete(todo)" class="btn del-btn">Delete</button>
+    <button *ngIf="!todo.completed && !todo.editing" (click)="completed(todo)" class="btn comp-btn">Mark as Completed</button>
+    <button *ngIf="todo.completed" (click)="markAsIncomplete(todo)" class="btn incomp-btn">Mark as Incomplete</button>
+    <button *ngIf="!todo.editing" (click)="delete(i)" class="btn del-btn">Delete</button>
   </div>
 </section>
