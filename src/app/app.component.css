@@ -59,7 +59,8 @@
 .todo-items{
     width: 70%;
     height: fit-content;
-    background-color: white;
+    background-color: var(--todos-background);
+    color: var(--todo-text-color);
     border: 1px solid black; 
     border-radius: 10px;
     padding: 20px;
@@ -98,4 +99,19 @@
 
 .incomp-btn{
     margin: 0px 10px;
+}
+
+.inProg{
+    width: 100vw;
+    height: 10vh;
+    background-color: red;
+    position: fixed;
+    bottom: 0;
+}
+
+.delayed{
+    height: fit-content;
+    background-color: rgba(255, 0, 0, 0.493);
+    color: white;
+    font-weight: 500;
 }

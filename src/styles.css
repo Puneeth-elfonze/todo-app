@@ -6,11 +6,23 @@
     --comp-btn-background: green;
     --hero-color: black;
     --todos-background: white;
-
-    /* --hero-background: linear-gradient(90deg, #383838, #000);
-    --hero-color: white;
-    --todos-background: rgb(74, 74, 74); */
+    --todo-text-color: black;
 }
+
+body[data-theme="dark"] {
+    --hero-background: linear-gradient(90deg, #383838, #000);
+    --hero-color: white;
+    --todos-background: rgb(74, 74, 74);
+    --todo-text-color: white;
+}
+
+body[data-theme="light"] {
+    --hero-background: linear-gradient(90deg, #103CE7, #64E9FF);
+    --hero-color: black;
+    --todos-background: white;
+    --todo-text-color: black;
+}
+
 *{
     padding: 0;
     margin: 0;

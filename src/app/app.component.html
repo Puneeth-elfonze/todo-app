@@ -8,8 +8,9 @@
 </section>
 
 <section class="todos">
-  <div class="todo-items" *ngFor="let todo of todos;let i = index" [ngClass]="{'completed': todo.completed}">
-    <h5 *ngIf="todo.time">Complete By : {{todo.time}}</h5>
+  <div [ngClass]=" todo.completeBy === 'Delayed' ? 'delayed' : '' " class="todo-items" *ngFor="let todo of todos;let i = index" [ngClass]="{'completed': todo.completed}">
+    <p ></p>
+    <h5 *ngIf="todo.completeBy">{{todo.completeBy}}</h5>
     <h3 *ngIf="!todo.editing">{{todo.text}}</h3>
 
     <form (ngSubmit)="saveEdit(todo)">
